@@ -21,20 +21,22 @@ Prerequesites must be included in this order:
 - [PNotify](http://sciactive.com/pnotify/) (>= 1.3) - both the CSS and JS
 - [jquery.dirtyforms](https://github.com/snikch/jquery.dirtyforms) (>= 1.0.0)
 
+**NOTE:** In PNotify 3.x, you must include the Confirm module and the History module JavaScript files after the main PNotify file.
+
 > If you are using a [Package Manager](#package-managers), the JavaScript dependencies will be installed automatically, but you will need to manually get a CSS theme if you are not already using one. Also, depending on your environment you may still need to add references to the JavaScript manually.
 
 ## Download & Installation
 There are several different ways to get the code. Some examples below:
 
 #### CDN
-The PNotify dialog module is available over jsDelivr CDN and can directly included to every page.
+The PNotify dialog module is available over jsDelivr CDN and can directly be included on every page.
 ```HTML
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00006/jquery.dirtyforms.dialogs.pnotify.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00007/jquery.dirtyforms.dialogs.pnotify.min.js"></script>
 ```
 
 jsDelivr also supports [on-the-fly concatenation of files](https://github.com/jsdelivr/jsdelivr#load-multiple-files-with-single-http-request), so you can reference only 1 URL to get jQuery, PNotify, jquery.dirtyforms, and jquery.dirtyforms.dialogs.pnotify in one request.
 ```HTML
-<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery@1.11.3,pnotify@2.0.0,jquery.dirtyforms@2.0.0-beta00006(jquery.dirtyforms.min.js+jquery.dirtyforms.dialogs.pnotify.min.js)"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/g/jquery@1.11.3,pnotify@3.0.0(pnotify.js+pnotify.confirm.js+pnotify.history.js),jquery.dirtyforms@2.0.0-beta00007(jquery.dirtyforms.min.js+jquery.dirtyforms.dialogs.pnotify.min.js)"></script>
 ```
 
 #### Self-Hosted
@@ -46,12 +48,18 @@ Download and save one of two available files to include the PNotify dialog modul
 You can also conveniently get all of the latest Dirty Forms files in one [Zip Download](https://github.com/NightOwl888/jquery.dirtyforms.dist/archive/master.zip).
 
 #### Package Managers
-The PNotify dialog module is even available through [Bower](http://bower.io) and [NuGet](https://www.nuget.org/). Just use one of the following commands below to install the dialog module, including all dependencies.
+The PNotify dialog module is even available through [NPM](http://npmjs.org), [Bower](http://bower.io), and [NuGet](https://www.nuget.org/). Just use one of the following commands below to install the dialog module, including all dependencies.
 
+[![NPM version](https://badge.fury.io/js/jquery.dirtyforms.dialogs.pnotify.svg)](http://www.npmjs.org/package/jquery.dirtyforms.dialogs.pnotify)
 [![Bower version](https://badge.fury.io/bo/jquery.dirtyforms.dialogs.pnotify.svg)](http://bower.io/search/?q=jquery.dirtyforms.dialogs.pnotify)
 [![NuGet version](https://badge.fury.io/nu/jquery.dirtyforms.dialogs.pnotify.svg)](https://www.nuget.org/packages/jquery.dirtyforms.dialogs.pnotify/)
 
+[![NPM](https://nodei.co/npm/jquery.dirtyforms.dialogs.pnotify.png?compact=true)](https://nodei.co/npm/jquery.dirtyforms.dialogs.pnotify/)
+
 ```
+// NPM
+$ npm install jquery.dirtyforms.dialogs.pnotify
+
 // Bower
 $ bower install jquery.dirtyforms.dialogs.pnotify
 
@@ -66,7 +74,7 @@ A [SourceMap](https://docs.google.com/document/d/1U1RGAehQwRypUTovF1KRlpiOFze0b-
 #### CDN
 
 ```HTML
-<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00006/jquery.dirtyforms.dialogs.pnotify.min.js.map"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00007/jquery.dirtyforms.dialogs.pnotify.min.js.map"></script>
 ```
 
 #### Package Managers
@@ -94,13 +102,15 @@ This dialog module is automatic. Simply include the reference to the dialog modu
 <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/fontawesome/4.3.0/css/font-awesome.min.css" />
 
 // PNotify (required)
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pnotify/2.0.0/pnotify.all.min.css" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/pnotify/3.0.0/pnotify.css" />
 
 // JavaScript (required)
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/pnotify/2.0.0/pnotify.all.min.js" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00006/jquery.dirtyforms.min.js" type="text/javascript"></script>
-<script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00006/jquery.dirtyforms.dialogs.pnotify.min.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/pnotify/3.0.0/pnotify.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/pnotify/3.0.0/pnotify.confirm.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/pnotify/3.0.0/pnotify.history.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00007/jquery.dirtyforms.min.js" type="text/javascript"></script>
+<script src="//cdn.jsdelivr.net/jquery.dirtyforms/2.0.0-beta00007/jquery.dirtyforms.dialogs.pnotify.min.js" type="text/javascript"></script>
 ```
 
 > If not using a CDN, you need to apply the dependencies in the same order as in the example above.
@@ -126,7 +136,7 @@ The following options are available to set via **$.DirtyForms.dialog.OPTIONNAME 
 		<th align="left">class</th>
 		<td>string</td>
 		<td nowrap="nowrap">'dirty-dialog'</td>
-		<td>Sets the CSS class of the SPAN element that contains all of the elements of the dialog.</td>
+		<td>Sets the CSS class of the DIV element (SPAN if using PNotify 1.3) that contains all of the elements of the dialog.</td>
 	</tr>
 	<tr>
 		<th align="left">proceedButtonText</th>
